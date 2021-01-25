@@ -3,6 +3,14 @@ import styles from './GameScreen.module.css'
 import {  PlayerArea, DealerArea} from '../../containers'
 import axios from 'axios';
 
+const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
+}
+
 export const GameScreen = () => {
 
     const [cardsDealerArea, setCardsDealerArea] = useState([]);
@@ -14,7 +22,8 @@ export const GameScreen = () => {
         'https://svquizz.s3.eu-central-1.amazonaws.com/cards.json',
         );
 
-        setCardsDealerArea(result.data);
+        setCardsDealerArea(shuffleArray(result.data));
+        setCardsPlayerArea([result.data[0]])
         };
 
         fetchData();
@@ -24,7 +33,7 @@ export const GameScreen = () => {
 
     return (
         <div className = {styles.containerSections}>
-            {/* <PlayerArea currentsCards = {cardsPlayerArea}></PlayerArea> */}
+            <PlayerArea currentsCards = {cardsPlayerArea}></PlayerArea>
             <DealerArea currentsCards = {cardsDealerArea}></DealerArea>
         </div>
     )
