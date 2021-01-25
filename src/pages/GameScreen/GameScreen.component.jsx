@@ -23,18 +23,21 @@ export const GameScreen = () => {
         );
 
         setCardsDealerArea(shuffleArray(result.data));
-        setCardsPlayerArea([result.data[0]])
         };
 
         fetchData();
     }, []);
+
+    const handlingCards = (index) => {
+        console.log("seleccionaron index", index)
+    }
 
     
 
     return (
         <div className = {styles.containerSections}>
             <PlayerArea currentsCards = {cardsPlayerArea}></PlayerArea>
-            <DealerArea currentsCards = {cardsDealerArea}></DealerArea>
+            <DealerArea currentsCards = {cardsDealerArea} selectCard = {handlingCards}></DealerArea>
         </div>
     )
 }

@@ -10,11 +10,13 @@ export const PlayerArea = (props) => {
         cards.push(props.currentsCards[i] ? props.currentsCards[i] : {})
         i++
     }
-    console.log(cards);
+
     return ( 
         <div className = {styles.containerCards}>  
-            {cards.map(item => (
-                <PokerCard image = {item ? item.url : null} />
+            {cards.map((item, i) => (
+                <div className = {styles.containerCard} key = {i}>
+                    <PokerCard image = {item ? item.url : null} />
+                </div>
             ))}
         </div>
     )
