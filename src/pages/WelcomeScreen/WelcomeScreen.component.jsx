@@ -12,11 +12,11 @@ export const WelcomeScreen = () => {
             style={{ width: '26rem' }}
             className="mb-2"
         >
-            <Card.Header>Prueba Stack & Vault</Card.Header>
+            <Card.Header>Tech Test Stack & Vault</Card.Header>
             <Card.Body>
             <Card.Title>Roberto Guillermo Torres Lopez.</Card.Title>
             <Card.Text>
-                <a href='https://github.com/hitzu'>GitHub Poker Game</a>
+                <a href='https://github.com/hitzu/Stack-Vault-poker-game'>GitHub Poker Game</a>
             </Card.Text>
                 <Link to="/game">
                     <Button variant="dark" >Start Game</Button>

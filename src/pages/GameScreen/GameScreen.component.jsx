@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './GameScreen.module.css'
 import {  PlayerArea, DealerArea} from '../../containers'
 import axios from 'axios';
+import {Modal, Button} from 'react-bootstrap';
 
 const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -15,6 +16,9 @@ export const GameScreen = () => {
 
     const [cardsDealerArea, setCardsDealerArea] = useState([]);
     const [cardsPlayerArea, setCardsPlayerArea] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
+    const maxElements = 4;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,15 +33,36 @@ export const GameScreen = () => {
     }, []);
 
     const handlingCards = (index) => {
-        console.log("seleccionaron index", index)
+        if (cardsPlayerArea.length >= maxElements){
+            setShowModal(true)
+        } else {
+            setCardsPlayerArea([...cardsPlayerArea, cardsDealerArea[index]])
+            cardsDealerArea.splice(index, 1);
+        }
+
     }
 
-    
+    const handleClose = () => {
+        window.location.reload();
+    };
 
     return (
-        <div className = {styles.containerSections}>
-            <PlayerArea currentsCards = {cardsPlayerArea}></PlayerArea>
-            <DealerArea currentsCards = {cardsDealerArea} selectCard = {handlingCards}></DealerArea>
-        </div>
+        <>
+            <Modal show={showModal} onHide={handleClose}>
+            <Modal.Header closeButton>
+            <Modal.Title>Game Finish</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>I hope that you enjoyed the test</Modal.Body>
+            <Modal.Footer>
+            <Button variant="primary" onClick={handleClose}>
+                Restart Game
+            </Button>
+            </Modal.Footer>
+        </Modal>
+            <div className = {styles.containerSections}>
+                <PlayerArea currentsCards = {cardsPlayerArea}></PlayerArea>
+                <DealerArea currentsCards = {cardsDealerArea} selectCard = {handlingCards}></DealerArea>
+            </div>
+        </>
     )
 }
