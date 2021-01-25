@@ -1,0 +1,15 @@
+.card{
+  width: 57px;
+  height: 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+

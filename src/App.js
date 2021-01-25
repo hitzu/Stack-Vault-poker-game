@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { WelcomeScreen } from './containers/WelcomeScreen'
-import { GameScreen } from './containers/GameScreen'
+import { WelcomeScreen } from './pages/WelcomeScreen'
+import { GameScreen } from './pages/GameScreen'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 

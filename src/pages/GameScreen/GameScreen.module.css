@@ -1,0 +1,19 @@
+.containerSections{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.one{
+  width: 800px;
+  height: 200px;
+  background-color: red;
+}
+
+.two{
+  width: 400px;
+  height: 200px;
+  background-color: black;
+}
